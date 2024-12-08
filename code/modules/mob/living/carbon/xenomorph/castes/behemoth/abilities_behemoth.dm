@@ -1205,7 +1205,9 @@ RU TGMC EDIT */
 	if(amount <= 0)
 		return
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	var/damage_reduction_mult = clamp((xeno_owner.health / (xeno_owner.maxHealth * 0.7)), 0, 0.5)
+	if(xeno_owner.health > (xeno_owner.maxHealth * 0.7))
+		return
+	var/damage_reduction_mult = 0.55
 	var/damage_amount = round(amount * damage_reduction_mult)
 	amount_mod += damage_amount
 
